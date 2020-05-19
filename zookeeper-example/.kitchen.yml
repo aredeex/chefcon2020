@@ -1,0 +1,46 @@
+---
+driver:
+  name: vagrant
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 14.11.21
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+
+suites:
+  - name: hab-base-recipe
+    run_list:
+      - recipe[zookeeper-example::base-recipe]
+    attributes:
+      package_name: core/zookeeper
+    verifier:
+      inspec_tests:
+        - test/smoke/inspec/base-recipe.rb
+  - name: hab-binary-recipe
+    run_list:
+      - recipe[zookeeper-example::binary-recipe]
+    attributes:
+      package_name: core/zookeeper
+    verifier:
+      inspec_tests:
+        - test/smoke/inspec/base-recipe.rb
+  - name: hab-release-recipe
+    run_list:
+      - recipe[zookeeper-example::release-recipe]
+    attributes:
+      package_name: nd-core/zookeeper
+    verifier:
+      inspec_tests:
+        - test/smoke/inspec/base-recipe.rb
+  - name: hab-config-recipe
+    run_list:
+      - recipe[zookeeper-example::config-recipe]
+    attributes:
+      package_name: core/zookeeper
+    verifier:
+      inspec_tests:
+        - test/smoke/inspec/config-recipe.rb

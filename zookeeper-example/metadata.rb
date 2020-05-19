@@ -1,0 +1,12 @@
+name 'zookeeper-example'
+maintainer 'David McMaster'
+maintainer_email 'david.mcmaster@netdocuments.com'
+license 'all_rights'
+description 'Installs/Configures nd-zookeeper'
+long_description 'Installs/Configures nd-zookeeper'
+version '3.15.0'
+
+depends 'hostsfile', '~> 2.4.5'
+depends 'sysctl', '~> 0.10.2'
+depends 'habitat', '~> 2.0.2'
+depends 'docker', '~> 4.11.0'
